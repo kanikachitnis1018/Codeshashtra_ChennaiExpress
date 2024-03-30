@@ -5,16 +5,56 @@ Analysis
 {% endblock %}
 
 {% block content %}
-<body>
-    <div class="container">
-        <h1>Video Frames Display</h1>
-    <div id="video-container">
-        {% for frame in frames %}
-            <img src="data:image/jpeg;base64,{{ frame }}" alt="Frame">
-        {% endfor %}
-    </div>
-    </div>
+<div class="container">
+    <h1>Video Frames Display</h1>
+    <div id="video-container"></div>
+</div>
 
-</body>
+<script>
+    // Function to fetch video frames from the server
+    async function fetchVideoFrames() {
+        const response = await fetch('/analyse');
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder('utf-8');
 
+        let data = '';
+        let frames = [];
+
+        // Read the response stream as text and split frames
+        while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            data += decoder.decode(value, { stream: true });
+
+            const framesStartIndex = data.indexOf('--frame\r\n');
+            const framesEndIndex = data.indexOf('--frame\r\n', framesStartIndex + 1);
+
+            if (framesStartIndex !== -1 && framesEndIndex !== -1) {
+                const frameData = data.slice(framesStartIndex, framesEndIndex);
+                frames.push(frameData);
+                data = data.slice(framesEndIndex);
+            }
+        }
+
+        return frames;
+    }
+
+    // Function to display video frames
+    async function displayVideoFrames() {
+        const videoContainer = document.getElementById('video-container');
+
+        const frames = await fetchVideoFrames();
+
+        // Display frames
+        for (const frame of frames) {
+            const img = document.createElement('img');
+            img.src = `data:image/jpeg;base64,${frame}`;
+            img.alt = 'Frame';
+            videoContainer.appendChild(img);
+        }
+    }
+
+    // Call the displayVideoFrames function when the document is loaded
+    document.addEventListener('DOMContentLoaded', displayVideoFrames);
+</script>
 {% endblock %}
