@@ -1,0 +1,16 @@
+{% extends 'base.html'%}
+
+{% block title %}
+Analysis
+{% endblock %}
+
+{% block content %}
+<body class="bg-gray-100">
+    <div class="max-w-screen-md mx-auto py-8 px-4">
+        <h1 class="text-3xl font-bold mb-4">Detect Hand and Pen</h1>
+        <div id="video-container" class="relative w-full" style="padding-top: 75%;">
+            <img id="hand_pen_feed" src="{{ url_for('hand_pen_feed') }}" class="absolute inset-0 w-full h-full object-cover" alt="Hand and Pen Feed">
+        </div>
+    </div>
+</body>
+{% endblock %}

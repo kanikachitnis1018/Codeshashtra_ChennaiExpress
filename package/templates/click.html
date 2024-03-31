@@ -1,0 +1,16 @@
+{% extends 'base.html'%}
+
+{% block title %}
+Analysis
+{% endblock %}
+
+{% block content %}
+<body class="bg-gray-100">
+    <div class="max-w-screen-md mx-auto py-8 px-4">
+        <h1 class="text-3xl font-bold mb-4">Detection</h1>
+        <div id="video-container" class="w-640 h-480 mx-auto">
+            <img id="hand_feed" src="{{ url_for('hand_feed') }}" class="w-full h-full object-cover" alt="Hand Feed">
+        </div>
+    </div>
+</body>
+{% endblock %}

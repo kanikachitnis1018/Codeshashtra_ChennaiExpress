@@ -20,9 +20,7 @@
                 <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
                     <div class="bg-black-800 rounded-lg px-4 py-2">
                         <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 rounded-lg bg-black md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                            <li>
-                                <a href="{{ url_for('guide') }}" class="block bg-black py-2 px-3 text-white hover:text-blue-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-blue-500">Guide</a>
-                            </li>
+                            
                             <li>
                                 <a href="{{ url_for('analyse') }}" class="block py-2 px-3 bg-black text-white hover:text-blue-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-blue-500">Analyse</a>
                             </li>
@@ -41,7 +39,9 @@
         {% block content %}
 
         {% endblock %}
-          
+    
     </div>
+    <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+    <script src="https://mediafiles.botpress.cloud/5c3a3d77-6fb6-469b-84f3-93e8aca5b986/webchat/config.js"defer></script>
 </body>
 </html>
