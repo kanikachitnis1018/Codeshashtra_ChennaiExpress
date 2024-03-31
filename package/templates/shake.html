@@ -1,0 +1,20 @@
+{% extends 'base.html'%}
+
+{% block title %}
+Analysis
+{% endblock %}
+
+<style>
+    #video-container {
+        width: 640px;
+        height: 480px;
+        margin: auto;
+    }
+</style>
+
+{% block content %}
+<body>
+    <h1>Detect Hand and Pen</h1>
+    <img id="hand_pen_feed" src="{{ url_for('hand_pen_feed') }}" width="640" height="480">
+</body
+{% endblock %}
