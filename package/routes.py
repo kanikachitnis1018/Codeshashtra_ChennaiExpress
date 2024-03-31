@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for, flash, request, jsonify, Response, requests
+from flask import render_template, redirect, url_for, flash, request, jsonify, Response
 from flask_login import login_required, login_user, logout_user
 from package.forms import LoginForm, RegisterForm
 from package.models import User
@@ -71,6 +71,8 @@ def hand_detection():
     cv2.destroyAllWindows()
 
 def detect_hand_and_pen():
+    global pen_shake_count  # Declare pen_shake_count as global
+    
     cap = cv2.VideoCapture(0)
     
     lower_color = np.array([100, 100, 100])
@@ -98,7 +100,7 @@ def detect_hand_and_pen():
             if prev_pen_tip_pos is not None and 'pen_tip_center' in locals():
                 prev_x, prev_y = prev_pen_tip_pos
                 curr_x, curr_y = pen_tip_center
-                displacement = np.sqrt((curr_x - prev_x) ** 2 + (curr_y - prev_y) ** 2)
+                displacement = np.sqrt((curr_x - prev_x) * 2 + (curr_y - prev_y) * 2)
                 if displacement > 30:  
                     pen_shake_count += 1
 
@@ -117,11 +119,11 @@ def detect_hand_and_pen():
                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
     cap.release()
-
+    
 mp_pose = mp.solutions.pose
 
 def calculate_distance(point1, point2):
-    return math.sqrt((point1.x - point2.x)**2 + (point1.y - point2.y)**2)
+    return math.sqrt((point1.x - point2.x)*2 + (point1.y - point2.y)*2)
 
 def classify_distance(distance):
     if distance <= 0.3:
@@ -189,16 +191,12 @@ def guide():
 @app.route("/shake")
 #@login_required
 def shake():
-<<<<<<< HEAD
     global pen_shake_count
     if pen_shake_count > 15:
         return redirect(url_for('distance'))
     else:
         return Response(detect_hand_and_pen(), mimetype='multipart/x-mixed-replace; boundary=frame')
-=======
-    return Response(detect_hand_and_pen(), mimetype='multipart/x-mixed-replace; boundary=frame')
     #return render_template("analyse.html")
->>>>>>> f73f253d391b42a3cd7a23845697410cc9ec8013
     
 @app.route("/click")
 #@login_required
@@ -211,10 +209,7 @@ def click():
 def distance():
     return Response(pose_detection(), mimetype='multipart/x-mixed-replace; boundary=frame')
     #return render_template("analyse.html")
-<<<<<<< HEAD
 
-=======
->>>>>>> f73f253d391b42a3cd7a23845697410cc9ec8013
 
 @app.route("/login", methods=['POST'])
 def login():
@@ -253,4 +248,4 @@ def register():
 def logout_page():
     logout_user()
     flash("You have been logged out", category='info')
-    return redirect(url_for('index.html'))
+    return redirect(url_for('index.html')
