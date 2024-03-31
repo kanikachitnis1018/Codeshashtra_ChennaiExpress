@@ -14,10 +14,23 @@ def index():
 def guide():
     return render_template("guide.html")
 
-@app.route("/analyse")
+@app.route("/shake")
 #@login_required
-def analyse():
-    return render_template("analyse.html")
+def shake():
+    return Response(detect_hand_and_pen(), mimetype='multipart/x-mixed-replace; boundary=frame')
+    #return render_template("analyse.html")
+    
+@app.route("/click")
+#@login_required
+def click():
+    return Response(hand_detection(), mimetype='multipart/x-mixed-replace; boundary=frame')
+    #return render_template("analyse.html")
+    
+@app.route("/distance")
+#@login_required
+def distance():
+    return Response(pose_detection(), mimetype='multipart/x-mixed-replace; boundary=frame')
+    #return render_template("analyse.html")
 
 @app.route("/login", methods=['POST'])
 def login():
