@@ -5,7 +5,7 @@ Home Page
 {% endblock %}
 
 {% block content %}
-    <body style="background-color: #FCF6F5;">
+<body style="background-color: #FCF6F5;">
     
     <div class="container mx-auto px-4 py-12">
         <div class="flex flex-col md:flex-row items-center md:items-start">
@@ -31,12 +31,18 @@ Home Page
         </div>
     </div>
     
-
-    <!-- Treatment Information -->
-    <div class="container mx-auto px-4 py-12">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4" align="right">How to Treat <span style="font-size: 50px; color:#990011; font-family: Trebuchet MS; font-weight: 700px;">ASTHMA?</span></h1>
-        <p class="text-lg md:text-xl text-gray-800 leading-relaxed mb-8" style="font-family: Trebuchet MS;margin-left:60px; padding-left:50%" align="right">Treatment for asthma typically involves long-term management strategies to control symptoms and prevent exacerbations. Common treatments include the use of inhalers (such as bronchodilators and corticosteroids), oral medications, and lifestyle modifications (such as avoiding triggers and maintaining a healthy lifestyle). It's essential for individuals with asthma to work closely with their healthcare providers to develop a personalized treatment plan that meets their specific needs and ensures optimal asthma control.</p>
+<!-- Treatment Information -->
+<div class="container mx-auto px-4 py-12">
+    <div class="flex flex-wrap items-center">
+        <div class="w-full md:w-1/2">
+            <img class="w-full object-cover" src="{{ url_for('static', filename='images/Gemini_Generated_Image (1).jpeg') }}" alt="Treatment Image" style="height: 400px; width: 500px">
+        </div>
+        <div class="w-full md:w-1/2">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">How to Treat <span style="font-size: 50px; color:#990011; font-family: Trebuchet MS; font-weight: 700;">ASTHMA</span></h1>
+            <p class="text-lg md:text-xl text-gray-800 leading-relaxed mb-8" style="font-family: Trebuchet MS;" align="left">Treatment for asthma typically involves long-term management strategies to control symptoms and prevent exacerbations. Common treatments include the use of inhalers (such as bronchodilators and corticosteroids), oral medications, and lifestyle modifications (such as avoiding triggers and maintaining a healthy lifestyle). It's essential for individuals with asthma to work closely with their healthcare providers to develop a personalized treatment plan that meets their specific needs and ensures optimal asthma control.</p>
+        </div>
     </div>
+</div>
 
     <div class="container mx-auto px-4 py-12">
         <div class="flex flex-wrap items-center">
@@ -45,7 +51,7 @@ Home Page
                 <p class="text-lg md:text-xl text-gray-800 leading-relaxed mb-8" style="font-family: Trebuchet MS;" align="left">Taking precautions can help individuals with asthma manage their condition effectively and reduce the risk of exacerbations. Some essential precautions include avoiding exposure to known triggers (such as allergens, smoke, and pollutants), maintaining good indoor air quality, adhering to medication regimens as prescribed by healthcare providers, and having an asthma action plan in place for emergencies. Additionally, regular exercise and maintaining a healthy diet can contribute to overall asthma management and improve lung function.</p>
             </div>
             <div class="w-full md:w-1/2">
-                <img class="w-full object-cover"align="right" src="{{ url_for('static', filename='images\Gemini_Generated_Image.png') }}" alt="Card image" style="height: 400px; width:500px">
+                <img class="w-full object-cover" align="right" src="{{ url_for('static', filename='images/images.png') }}" alt="Card image" style="height: 400px; width:500px">
             </div>
         </div>
     </div>
@@ -62,7 +68,7 @@ Home Page
                 </div>
             </div>
             <div class="bg-white shadow-lg rounded-lg overflow-hidden transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
-                <img class="w-full h-64 object-cover" src="{{ url_for('static', filename='images/Gemini_Generated_Image.jpg') }}" alt="Card image">
+                <img class="w-full h-64 object-cover" src="{{ url_for('static', filename='images/download (1).png') }}" alt="Card image">
                 <div class="px-6 py-4">
                     <div class="font-bold text-xl mb-2">Shake Detection and Analysis</div>
                     <p class="text-gray-700 text-base">With our integrated shake detection feature, the system can identify pre-action behaviors by detecting shaking movements of the pen before its use. It offers detailed analysis, including the count, frequency, and orientation of shakes per second, enhancing the accuracy of action detection and providing valuable insights into user behavior.</p>
@@ -73,6 +79,7 @@ Home Page
                 <div class="px-6 py-4">
                     <div class="font-bold text-xl mb-2">Guided Tour for User Understanding</div>
                     <p class="text-gray-700 text-base">To ensure effective utilization of the technology, our solution incorporates a guided tour feature. Users are provided with a step-by-step walkthrough of the system's functionalities, enabling them to understand and utilize the technology effectively. This feature enhances user experience and promotes user engagement by facilitating seamless interaction with the system.</p>
+                    
                 </div>
             </div>
         </div>
