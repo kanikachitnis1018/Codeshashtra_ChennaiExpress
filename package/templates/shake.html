@@ -4,6 +4,7 @@
 Analysis
 {% endblock %}
 
+<<<<<<< HEAD
 {% block content %}
 <body class="bg-gray-100">
     <div class="max-w-screen-md mx-auto py-8 px-4">
@@ -13,4 +14,19 @@ Analysis
         </div>
     </div>
 </body>
+=======
+<style>
+    #video-container {
+        width: 640px;
+        height: 480px;
+        margin: auto;
+    }
+</style>
+
+{% block content %}
+<body>
+    <h1>Detect Hand and Pen</h1>
+    <img id="hand_pen_feed" src="{{ url_for('hand_pen_feed') }}" width="640" height="480">
+</body
+>>>>>>> f73f253d391b42a3cd7a23845697410cc9ec8013
 {% endblock %}

@@ -189,11 +189,16 @@ def guide():
 @app.route("/shake")
 #@login_required
 def shake():
+<<<<<<< HEAD
     global pen_shake_count
     if pen_shake_count > 15:
         return redirect(url_for('distance'))
     else:
         return Response(detect_hand_and_pen(), mimetype='multipart/x-mixed-replace; boundary=frame')
+=======
+    return Response(detect_hand_and_pen(), mimetype='multipart/x-mixed-replace; boundary=frame')
+    #return render_template("analyse.html")
+>>>>>>> f73f253d391b42a3cd7a23845697410cc9ec8013
     
 @app.route("/click")
 #@login_required
@@ -206,7 +211,10 @@ def click():
 def distance():
     return Response(pose_detection(), mimetype='multipart/x-mixed-replace; boundary=frame')
     #return render_template("analyse.html")
+<<<<<<< HEAD
 
+=======
+>>>>>>> f73f253d391b42a3cd7a23845697410cc9ec8013
 
 @app.route("/login", methods=['POST'])
 def login():
