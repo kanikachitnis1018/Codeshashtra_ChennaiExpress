@@ -7,6 +7,7 @@ import cv2
 import mediapipe as mp
 import numpy as np
 import time
+import math
 
 mp_face_detection = mp.solutions.face_detection
 mp_face_mesh = mp.solutions.face_mesh
@@ -183,11 +184,6 @@ def pose_detection():
 def index():
     return render_template("index.html")
 
-@app.route("/guide")
-# @login_required
-def guide():
-    return render_template("guide.html")
-
 @app.route("/shake")
 #@login_required
 def shake():
@@ -248,4 +244,4 @@ def register():
 def logout_page():
     logout_user()
     flash("You have been logged out", category='info')
-    return redirect(url_for('index.html')
+    return redirect(url_for('index.html'))
